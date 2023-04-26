@@ -674,7 +674,7 @@ class Canvas2Frame_Design_Widget extends WP_Widget
                             }
 
                             // consider device pixel ratio
-                            // zoomLevel = zoomLevel * window.devicePixelRatio;
+                             zoomLevel = zoomLevel * window.devicePixelRatio;
                         }
 
 
@@ -1050,28 +1050,28 @@ class Canvas2Frame_Design_Widget extends WP_Widget
 
 
                             // ctx.imageSmoothingEnabled = false;
-                            // ctx.imageSmoothingQuality = 'high';
+                             ctx.imageSmoothingQuality = 'high';
 
                             console.log('window.devicePixelRatio: ' + window.devicePixelRatio);
 
 
-                            // var target_width = width;
-                            // var target_height = height;
-                            // width = target_width * window.devicePixelRatio;
-                            // height = target_height * window.devicePixelRatio;
-                            // xOffset = xOffset / window.devicePixelRatio;
-                            // yOffset = yOffset / window.devicePixelRatio;
-                            // xOffset = 0;
-                            // yOffset = 0;
+                            //var target_width = width;
+                            //var target_height = height;
+                           // width = target_width * window.devicePixelRatio;
+                           // height = target_height * window.devicePixelRatio;
+                           // xOffset = xOffset / window.devicePixelRatio;
+                            //yOffset = yOffset / window.devicePixelRatio;
+                           // xOffset = 0;
+                           // yOffset = 0;
                             
-                            // var canvas_width = canvas.width;
-                            // var canvas_height = canvas.height;
-                            // canvas.width = width * window.devicePixelRatio;
-                            // canvas.height = height * window.devicePixelRatio;
-                            // canvas.style.width = `${width}px`;
-                            // canvas.style.height = `${height}px`;
-                            // width = width * window.devicePixelRatio;
-                            // height = height * window.devicePixelRatio;
+                            var canvas_width = canvas.width;
+                            var canvas_height = canvas.height;
+                            canvas.width = width * window.devicePixelRatio;
+                            canvas.height = height * window.devicePixelRatio;
+                            canvas.style.width = `${width}px`;
+                            canvas.style.height = `${height}px`;
+                            width = width * window.devicePixelRatio;
+                            height = height * window.devicePixelRatio;
 
                             console.log('xOffset: ' + xOffset);
                             console.log('yOffset: ' + yOffset);
@@ -1079,21 +1079,21 @@ class Canvas2Frame_Design_Widget extends WP_Widget
                             console.log('height: ' + height);
 
 
-                            ctx.drawImage(image, xOffset, yOffset, width, height);
+                            ctx.drawImage(image, xOffset / window.devicePixelRatio, yOffset / window.devicePixelRatio, width, height);
                         }
 
 
-                        // function updateCanvasSizeAndScale() {
-                        //     const pixelRatio = window.devicePixelRatio || 1;
-                        //     canvas.width = canvas.clientWidth * pixelRatio;
-                        //     canvas.height = canvas.clientHeight * pixelRatio;
+                         function updateCanvasSizeAndScale() {
+                             const pixelRatio = window.devicePixelRatio || 1;
+                             canvas.width = canvas.clientWidth * pixelRatio;
+                             canvas.height = canvas.clientHeight * pixelRatio;
 
-                        //     // Reset the transformation matrix
-                        //     ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
-                        // }
+                             // Reset the transformation matrix
+                             ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+                         }
 
                         
-                        // updateCanvasSizeAndScale();
+                         updateCanvasSizeAndScale();
 
 
 
